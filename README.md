@@ -7,11 +7,13 @@
 ## 🚀 Overview
 
 Interactive dashboard (Dash/Plotly) for **G10 rates** to spot **relative value** across govies and swaps.  
-It fetches sovereign yield curves, builds zero curves, computes **Gov vs Bund**, **ASW (Gov − IRS)** and **IRS vs EUR IRS** spreads, plus quick **carry/roll** and **flies**. A **hedging** pane proposes DV01-matched futures/IRS hedges.
+It fetches **live sovereign yield data from Investing.com** (scraped in real time), builds zero curves, and computes **Gov vs Bund**, **ASW (Gov − IRS)** and **IRS vs EUR IRS** spreads — refreshed automatically every **90 seconds**.  
+The dashboard also provides **carry/roll**, **flies**, and a **hedging** pane proposing DV01-matched futures/IRS hedges.
 
 ## ⚙️ Features
 
-- **Multi-curve plotting**: Par & Zero (bootstrapped) for bonds and swaps  
+- **Multi-curve plotting**: Par & Zero (bootstrapped) for bonds and swaps
+- **Live G10 data feed**: government yields scraped from *Investing.com*  
 - **Relative Value modes** (toggle in UI):
   - **Gov vs Bund** (sovereign spread)
   - **ASW (Gov − IRS)** per currency
@@ -72,7 +74,8 @@ Core libraries:
 
 ## 🧠 Notes
 
-- Default refresh interval: **90 seconds** (`REFRESH_MS` in `Cash-Bond-Dash.py`)  
+- Default refresh interval: **90 seconds** (`REFRESH_MS` in `Cash-Bond-Dash.py`)
+- Data in real Time scrapped from **Investing.com**
 - Swap curves are **static stubs** (for now) — ready to be replaced by live APIs or CSV inputs  
 - Designed for **modularity**: each analytical block (bootstrapping, spreads, hedging) is fully independent  
 - Default theme: **Bloomberg dark** (`bbg`), toggleable to light mode  
