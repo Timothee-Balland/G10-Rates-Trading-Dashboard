@@ -51,7 +51,7 @@ It fetches sovereign yield curves, builds zero curves, computes **Gov vs Bund**,
 
 ```bash
 # 1️⃣ Clone the repo
-git clone https://github.com/<your-user>/G10-Rates-Dashboard.git
+git clone https://github.com/Timothee-Balland/G10-Rates-Trading-Dashboard.git
 cd G10-Rates-Dashboard
 
 # 2️⃣ Install dependencies (via Poetry)
