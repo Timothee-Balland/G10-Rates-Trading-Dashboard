@@ -60,7 +60,7 @@ poetry install
 # 3️⃣ Run the app
 poetry run python Cash-Bond-Dash.py
 # → http://127.0.0.1:8050
-
+```
 
 ## 📚 Dependencies
 
