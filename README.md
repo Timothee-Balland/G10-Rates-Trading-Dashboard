@@ -1,7 +1,7 @@
 # 📊 G10 Rates Trading Dashboard
 
 ![GitHub last commit](https://img.shields.io/badge/last%20commit-October%202025-brightgreen)
-![Python](https://img.shields.io/badge/python-v3.10%2B-blue.svg)
+![Python](https://img.shields.io/badge/python-v3.12%2B-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## 🚀 Overview
