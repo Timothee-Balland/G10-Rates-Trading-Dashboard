@@ -1,0 +1,247 @@
+/* assets/theme.css */
+
+/* Base */
+html, body, #app-root { height: 100%; }
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: transparent; /* important: on laisse au root le soin de teinter */
+  color: var(--text);       /* hérite si descendant du root */
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+#app-root {
+  min-height: 100vh;        /* couvre tout le viewport -> plus de bande blanche en bas */
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ---------- THEME TOKENS ---------- */
+.theme-light {
+  --bg: #f6f7fb;
+  --text: #111418;
+  --muted: #5b6170;
+  --card-bg: #ffffff;
+  --card-header-bg: #f1f3f7;
+  --border: #e3e6ee;
+  --tab-bg: #e9ecf3;
+  --tab-active: #ffffff;
+  --tab-border: #d6dbe7;
+  --accent: #1a73e8;
+  --accent-2: #0f9d58;
+}
+
+/* Bloomberg-like (bbg) — noir + orange accent */
+.theme-bbg {
+    --bg: #090b0e;              /* quasi noir */
+    --text: #e8eaef;            /* gris clair */
+    --muted: #c9ceda;
+    --card-bg: #0c0f14;         /* panneaux */
+    --card-header-bg: #101521;  /* header panneaux */
+    --border: #2b3645;          /* bordures bleutées/ardoise */
+    --tab-bg: #101521;
+    --tab-active: #0c0f14;
+    --tab-border: #2b3645;
+    --accent: #ff9f0a;          /* ORANGE Bloomberg */
+    --accent-2: #2bd67d;        /* vert secondaire */
+    color-scheme: dark;
+  }
+  
+  /* Dropdown (react-select) hover & focus en orange dans le thème bbg */
+  .theme-bbg .Select-option:hover,
+  .theme-bbg .Select-option.is-focused {
+    background: rgba(255, 159, 10, 0.12) !important;
+  }
+  .theme-bbg input:focus,
+  .theme-bbg textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 159, 10, 0.25);
+  }
+  
+  /* Radio/checkbox accent en orange dans le thème bbg */
+  .theme-bbg input[type="radio"],
+  .theme-bbg input[type="checkbox"] {
+    accent-color: var(--accent);
+  }
+  
+  /* Modebar Plotly hover en orange */
+  .theme-bbg .modebar-btn:hover {
+    color: var(--accent) !important;
+    fill: var(--accent) !important;
+  }
+  
+  /* DataTable hover neutre compatible noir */
+  .theme-bbg div.dash-table-container .dash-spreadsheet tr:hover td {
+    background: rgba(255, 159, 10, 0.10) !important;
+  }
+  
+
+/* ---------- GLOBAL INHERITANCE ---------- */
+.theme-light, .theme-dark, .theme-bbg {
+  background: var(--bg);
+  color: var(--text);
+}
+.theme-light *, .theme-dark *, .theme-bbg * {
+  color: inherit;
+}
+
+/* ---------- TABS ---------- */
+.dash-tabs {
+  background: var(--tab-bg) !important;
+  border: 1px solid var(--tab-border) !important;
+  border-radius: 10px !important;
+  padding: 6px !important;
+}
+.dash-tab {
+  background: transparent !important;
+  color: var(--text) !important;
+  border: none !important;
+}
+.dash-tab--selected {
+  background: var(--tab-active) !important;
+  border: 1px solid var(--tab-border) !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+}
+
+/* ---------- CARDS / WRAPPERS ---------- */
+.graph-card,
+.panel-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+}
+.dash-graph, .js-plotly-plot { background: transparent !important; }
+
+/* ---------- FORMS (deep children) ---------- */
+label { color: var(--muted); font-weight: 600; }
+
+input[type="text"],
+input[type="number"],
+input[type="search"],
+textarea {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  outline: none;
+}
+input:focus, textarea:focus { border-color: var(--accent); }
+
+/* dcc.Dropdown (react-select) */
+.Select, .VirtualizedSelect, .Select-control {
+  background: var(--card-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+.Select-control {
+  border-radius: 8px !important;
+}
+.Select-value-label, .Select--single > .Select-control .Select-value-label,
+.Select-menu-outer, .Select-menu {
+  color: var(--text) !important;
+  background: var(--card-bg) !important;
+  border-color: var(--border) !important;
+}
+.Select-option {
+  background: var(--card-bg) !important;
+  color: var(--text) !important;
+}
+.Select-option:hover, .Select-option.is-focused {
+  background: rgba(255, 176, 0, 0.10) !important; /* léger hover, neutre; devient ambre en bbg */
+}
+.Select-arrow-zone .Select-arrow { border-top-color: var(--text) !important; }
+
+/* RadioItems / Checklists */
+input[type="radio"], input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* ---------- DATATABLE ---------- */
+div.dash-table-container .dash-spreadsheet-container {
+  background: var(--card-bg) !important;
+}
+div.dash-table-container .dash-spreadsheet-menu {
+  background: var(--card-header-bg) !important;
+  color: var(--text) !important;
+}
+div.dash-table-container .dash-spreadsheet th, 
+div.dash-table-container .dash-spreadsheet td {
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+  background: var(--card-bg) !important;
+}
+div.dash-table-container .dash-spreadsheet tr:hover td {
+  background: rgba(88, 166, 255, 0.08) !important; /* hover neutre; lisible dark/bbg */
+}
+
+/* ---------- PLOTLY MODEBAR ---------- */
+.modebar, .modebar-group, .modebar-btn {
+  background: transparent !important;
+  border: none !important;
+}
+.modebar-btn {
+  color: var(--text) !important;
+  fill: var(--text) !important;
+}
+.modebar-btn:hover {
+  color: var(--accent) !important;
+  fill: var(--accent) !important;
+}
+
+/* ---------- LINKS / BADGES ---------- */
+a { color: var(--accent); }
+.badge {
+  background: rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* Tabs (use our explicit classes instead of relying on Dash defaults) */
+.app-tabs {
+  background: var(--tab-bg) !important;
+  border: 1px solid var(--tab-border) !important;
+  border-radius: 10px !important;
+  padding: 6px !important;
+}
+.app-tab {
+  background: transparent !important;
+  color: var(--text) !important;
+  border: none !important;
+}
+.app-tab--selected {
+  background: var(--tab-active) !important;
+  border: 1px solid var(--tab-border) !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+}
+
+/* Toolbar card */
+.toolbar {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  padding: 10px 12px !important;
+}
+
+.graph-card, .panel-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 8px;
+  }
+  .dash-graph, .js-plotly-plot { background: transparent !important; }
+
+/* Compact toolbar in Bloomberg theme */
+.theme-bbg .toolbar {
+    padding: 8px 10px !important;
+    gap: 12px !important;
+  }
+  .theme-bbg label { color: var(--text); font-weight: 600; }
+  

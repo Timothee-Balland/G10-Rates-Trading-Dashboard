@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cash-bond-dashboard-live"
+version = "0.1.0"
+description = "Dash app pour afficher des taux obligataires en live depuis Investing.com"
+authors = ["Timothée Balland <ton.email@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.3"
+dash = "^3.2"
+plotly = "^6.3"
+requests = "^2.32"
+beautifulsoup4 = "^4.14"
+lxml = "^4.9"
+matplotlib = "^3.10.6"
+
+[tool.poetry.dev-dependencies]
+# Ici tu peux ajouter des dépendances pour le développement si nécessaire
